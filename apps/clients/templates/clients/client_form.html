@@ -1,0 +1,33 @@
+{% extends 'clients/base.html' %}
+
+
+{% block content %}
+    <form enctype="multipart/form-data" method="post" id="product_form" novalidate>
+        {% csrf_token %}
+        <div>
+            <label for="email">E-mail</label>
+            <input id="email" type="email" name="email" class="form-control" value="{{ object.email }}"
+                   required>
+        </div>
+        <div>
+            <label for="first_name">First name/Company name</label>
+            <input id="first_name" type="text" name="first_name" class="form-control" value="{{ object.first_name }}"
+                   required>
+        </div>
+        <div>
+            <label for="last_name">Last name (if required)</label>
+            <input id="last_name" type="text" name="last_name" class="form-control" value="{{ object.last_name }}">
+        </div>
+        <div>
+            <label for="comment">Comment</label>
+            <textarea name="comment" rows="3" class="form-control jsCountCharacters"
+                      id="comment">{{ object.comment }}</textarea>
+        </div>
+        <button class="w-100 btn btn-lg btn-primary" type="submit">Save</button>
+
+        {% if object %}
+            <a type="button" href="#">Delete</a>
+        {% endif %}
+    </form>
+
+{% endblock %}
