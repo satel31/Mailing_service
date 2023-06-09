@@ -41,7 +41,9 @@ DJANGO_APPS = [
 
 THIRD_PARTY_APPS = []
 
-USER_APPS = []
+USER_APPS = [
+    'apps.clients',
+]
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + USER_APPS
 
@@ -111,7 +113,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Europe/Moscow'
 
 USE_I18N = True
 
