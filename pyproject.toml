@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "coursework-6"
+version = "0.1.0"
+description = "Coursework for SkyPro course"
+authors = ["satel31 <blokhnina.tatiana@yandex.ru>"]
+readme = "README.md"
+packages = [{include = "coursework_6"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
