@@ -1,11 +1,11 @@
 from django.contrib import admin
-from apps.clients.models import Client
+from apps.clients.models import Clients
 
-@admin.register(Client)
-class ClientAdmin(admin.ModelAdmin):
-    list_display = ('pk', 'email', 'first_name', 'last_name', 'comment',)
+@admin.register(Clients)
+class ClientsAdmin(admin.ModelAdmin):
+    list_display = ('pk', 'email', 'name', 'comment',)
     list_filter = ('comment',)
-    search_fields = ('email', 'first_name', 'last_name',)
+    search_fields = ('email', 'name',)
 
 
 
