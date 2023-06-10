@@ -91,7 +91,7 @@
         <div class="row py-lg-5">
             <div class="col-lg-6 col-md-8 mx-auto">
                 <h1 class="fw-light">{{ title }}</h1>
-                <p class="lead text-body-secondary">Magical shop website</p>
+                <p class="lead text-body-secondary">Automatic Mailing Service</p>
             </div>
         </div>
     </section>
@@ -111,8 +111,8 @@
 <footer class="text-body-secondary py-5">
     <div class="container">
         <p class="float-end mb-1">
-            <a href="#">Create a new product</a>
-            <a href="#">Create a new post</a>
+            <a href="{% url 'clients:add_client' %}">Create a new client</a>
+            <a href="#">Create a new mailing list</a>
         </p>
     </div>
 </footer>
