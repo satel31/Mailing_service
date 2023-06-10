@@ -1,0 +1,25 @@
+{% extends 'clients/base.html' %}
+
+
+{% block content %}
+    <form enctype="multipart/form-data" method="post" id="product_form" novalidate>
+        {% csrf_token %}
+        <div>
+            <label for="email">E-mail</label>
+            <input id="email" type="email" name="email" class="form-control" value="{{ object.email }}"
+                   required>
+        </div>
+        <div>
+            <label for="name">Name</label>
+            <input id="name" type="text" name="name" class="form-control" value="{{ object.name }}"
+                   required>
+        </div>
+        <div>
+            <label for="comment">Comment</label>
+            <textarea name="comment" rows="3" class="form-control jsCountCharacters"
+                      id="comment">{{ object.comment }}</textarea>
+        </div>
+        <button class="w-100 btn btn-lg btn-primary" type="submit">Save</button>
+    </form>
+
+{% endblock %}
