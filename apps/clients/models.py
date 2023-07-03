@@ -5,7 +5,7 @@ NULLABLE = {'blank': True, 'null': True}
 
 class Clients(models.Model):
     email = models.EmailField(unique=True, verbose_name='email')
-    name = models.CharField(max_length=250, verbose_name='first_name')
+    name = models.CharField(max_length=250, verbose_name='name')
     comment = models.TextField(**NULLABLE)
     group = models.ForeignKey('Groups', on_delete=models.PROTECT, verbose_name='Group')
 
