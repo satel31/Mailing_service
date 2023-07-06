@@ -21,16 +21,16 @@ class Mailings(models.Model):
         ('M', 'monthly')
     )
     STATUS_CHOICES = (
-        ('C', 'created'),
-        ('R', 'running'),
-        ('CM', 'completed'),
+        ('created', 'created'),
+        ('running', 'running'),
+        ('completed', 'completed'),
     )
 
     time = models.DateTimeField(**NULLABLE, verbose_name='Time of sending')
     frequency = models.CharField(max_length=10, choices=FREQUENCY_CHOICES, verbose_name='Frequency of sending')
     status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='created',
                               verbose_name='Status of sending')
-    clients = models.ManyToManyField(Groups, verbose_name='Group of clients')
+    clients = models.ForeignKey(Groups, on_delete=models.SET_NULL, **NULLABLE, verbose_name='Group of clients')
     text = models.ForeignKey(Mail, on_delete=models.SET_NULL, **NULLABLE, verbose_name='Text of mailing')
 
     def __str__(self):
@@ -44,8 +44,8 @@ class Mailings(models.Model):
 
 class MailingLog(models.Model):
     ATTEMPT_STATUS_CHOICES = (
-        ('S', 'success'),
-        ('f', 'failure'),
+        ('success', 'success'),
+        ('failure', 'failure'),
     )
 
     attempt_date = models.DateTimeField(auto_now=True, verbose_name='Date of the last attempt')
