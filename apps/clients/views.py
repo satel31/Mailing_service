@@ -1,5 +1,5 @@
 from django.urls import reverse_lazy
-from django.views.generic import CreateView, ListView, UpdateView, DeleteView
+from django.views.generic import CreateView, ListView, UpdateView, DeleteView, DetailView
 
 from apps.clients.forms import GroupsForm, ClientsForm
 from apps.clients.models import Clients, Groups
@@ -26,7 +26,7 @@ class ClientsListView(ListView):
         return context_data
 
 
-class ClientsDetailView(DeleteView):
+class ClientsDetailView(DetailView):
     model = Clients
     template_name = 'clients/clients_detail.html'
 
