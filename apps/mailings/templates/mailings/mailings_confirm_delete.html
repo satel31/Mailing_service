@@ -3,14 +3,14 @@
 {% block content %}
     <form method="post">
         <section class="content-section">
-            <h1>Removal of client {{ object.name }}</h1>
+            <h1>Removal of mailing</h1>
 
             <div class="alert alert-danger">
                 <p>Are you sure? </p>
             </div>
             {% csrf_token %}
-            <a href="{% url 'clients:client_detail' object.pk %}" class="btn btn-default">No, it was a rash decision.</a>
-            <input type="submit" value="Yes, delete the client." class="btn btn-danger"/>
+            <a href="{% url 'mailings:mailings' %}" class="btn btn-default">No, it was a rash decision.</a>
+            <input type="submit" value="Yes, delete the mailing." class="btn btn-danger"/>
 
         </section>
     </form>
