@@ -52,6 +52,7 @@ class MailingLog(models.Model):
     attempt_status = models.CharField(max_length=10, choices=ATTEMPT_STATUS_CHOICES,
                                       verbose_name='Status of the last attempt')
     response = models.TextField(**NULLABLE, verbose_name='Response of the server')
+    mailing = models.ForeignKey(Mailings, default=None, on_delete=models.CASCADE, **NULLABLE, verbose_name='Mailing')
 
     class Meta:
         verbose_name = 'log'

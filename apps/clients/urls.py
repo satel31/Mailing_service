@@ -4,7 +4,6 @@ from apps.clients.views import ClientsCreateView, ClientsListView, ClientsUpdate
     ClientsDeleteView, GroupsCreateView, GroupsListView, GroupsUpdateView, GroupsDeleteView
 
 app_name = 'clients'
-print(app_name)
 
 urlpatterns = [
     # clients urls
