@@ -1,0 +1,17 @@
+{% extends 'clients/base.html' %}
+
+{% block content %}
+    <form method="post">
+        <section class="content-section">
+            <h1>Removal of mail {{ object.subject }}</h1>
+
+            <div class="alert alert-danger">
+                <p>Are you sure? </p>
+            </div>
+            {% csrf_token %}
+            <a href="{% url 'mailings:mails' %}" class="btn btn-default">No, it was a rash decision.</a>
+            <input type="submit" value="Yes, delete the mail." class="btn btn-danger"/>
+
+        </section>
+    </form>
+{% endblock %}

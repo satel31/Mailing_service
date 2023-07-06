@@ -1,0 +1,39 @@
+{% extends 'clients/base.html' %}
+
+{% block content %}
+    <div class="table-responsive small">
+        <table class="table table-striped table-sm">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Time of sending</th>
+                <th scope="col">Frequency</th>
+                <th scope="col">Status</th>
+                <th scope="col">Clients</th>
+                <th scope="col">Texts</th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for object in object_list %}
+                <tr>
+                    <td><a href="#" class="nav-link">{{ object.pk }}</a></td>
+                    <td>{{ object.time }}</td>
+                    <td>{{ object.frequency }}</td>
+                    <td>{{ object.status }}</td>
+                    <td>{{ object.clients.group_name }}</td>
+                    <td>{{ object.text.subject }}</td>
+                    <td><a type="button" class="btn btn-sm btn-outline-secondary"
+                           href="{% url 'mailings:mailings_update' object.pk %}">Edit</a></td>
+                    <td><a type="button" class="btn btn-sm btn-outline-secondary"
+                           href="{% url 'mailings:mailings_delete' object.pk %}">Delete</a></td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <a type="button" class="btn btn-sm btn-outline-secondary"
+           href="{% url 'mailings:add_mailing' %}">Create new mailing</a>
+    </div>
+
+{% endblock %}
