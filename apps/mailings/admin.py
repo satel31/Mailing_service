@@ -11,7 +11,7 @@ class MailAdmin(admin.ModelAdmin):
 
 @admin.register(Mailings)
 class MailingsAdmin(admin.ModelAdmin):
-    list_display = ('pk', 'time', 'frequency', 'status', 'text',)
+    list_display = ('pk', 'time', 'frequency', 'status', 'clients', 'text',)
     list_filter = ('time', 'frequency', 'status', 'text')
     search_fields = ('clients', 'text',)
 
