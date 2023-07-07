@@ -38,7 +38,7 @@ class ClientsUpdateView(UpdateView):
 
 class ClientsDeleteView(DeleteView):
     model = Clients
-    success_url = reverse_lazy('clients:clients_list')
+    success_url = reverse_lazy('clients:groups_list')
 
 
 class GroupsCreateView(CreateView):
