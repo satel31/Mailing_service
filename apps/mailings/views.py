@@ -3,6 +3,7 @@ from django.views.generic import CreateView, ListView, UpdateView, DeleteView, D
 
 from apps.mailings.forms import MailForm, MailingsForm
 from apps.mailings.models import Mail, Mailings, MailingLog
+from apps.mailings.services import send_mailing
 
 
 class MailCreateView(CreateView):
@@ -34,6 +35,12 @@ class MailingsCreateView(CreateView):
     form_class = MailingsForm
     success_url = reverse_lazy('mailings:mailings')
 
+    def form_valid(self, form):
+        self.object = form.save()
+        send_mailing()
+        self.object.save()
+        return super().form_valid(form)
+
 
 class MailingsListView(ListView):
     model = Mailings
@@ -47,13 +54,20 @@ class MailingsUpdateView(UpdateView):
     form_class = MailingsForm
     success_url = reverse_lazy('mailings:mailings')
 
+    def form_valid(self, form):
+        self.object = form.save()
+        send_mailing()
+        self.object.save()
+        return super().form_valid(form)
+
+
 class MailingsDeleteView(DeleteView):
     model = Mailings
     success_url = reverse_lazy('mailings:mailings')
+
 
 class MailingLogListView(ListView):
     model = MailingLog
     extra_context = {
         'title': 'Your History of Mailing'
     }
-
