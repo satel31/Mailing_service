@@ -87,7 +87,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'coursework_6',
         'USER': 'postgres',
-        'PASSWORD': os.getenv('password')
+        'PASSWORD': os.getenv('password_db')
     }
 }
 
@@ -132,3 +132,11 @@ STATICFILES_DIRS = (
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+EMAIL_HOST = 'smtp.yandex.ru'
+EMAIL_HOST_USER = os.getenv('email')
+EMAIL_PORT = 465
+#In case of error copy password from .env. It helps.
+EMAIL_HOST_PASSWORD = os.getenv('password')
+EMAIL_USE_TLS = False
+EMAIL_USE_SSL = True
