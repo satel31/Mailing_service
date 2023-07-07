@@ -49,7 +49,7 @@ class MailingLog(models.Model):
         ('failure', 'failure'),
     )
 
-    attempt_date = models.DateTimeField(auto_now=True, verbose_name='Date of the last attempt')
+    attempt_date = models.DateTimeField(auto_now_add=True, verbose_name='Date of the last attempt')
     attempt_status = models.CharField(max_length=10, choices=ATTEMPT_STATUS_CHOICES,
                                       verbose_name='Status of the last attempt')
     response = models.TextField(**NULLABLE, verbose_name='Response of the server')
