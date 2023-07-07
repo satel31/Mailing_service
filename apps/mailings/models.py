@@ -1,6 +1,6 @@
 from django.db import models
 
-from apps.clients.models import Groups
+from apps.clients.models import Groups, Clients
 
 NULLABLE = {'blank': True, 'null': True}
 
@@ -27,11 +27,12 @@ class Mailings(models.Model):
     )
 
     time = models.DateTimeField(**NULLABLE, verbose_name='Time of sending')
+    end_time = models.DateTimeField(**NULLABLE, verbose_name='Time of the ending')
     frequency = models.CharField(max_length=10, choices=FREQUENCY_CHOICES, verbose_name='Frequency of sending')
     status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='created',
                               verbose_name='Status of sending')
-    clients = models.ForeignKey(Groups, on_delete=models.SET_NULL, **NULLABLE, verbose_name='Group of clients')
-    text = models.ForeignKey(Mail, on_delete=models.SET_NULL, **NULLABLE, verbose_name='Text of mailing')
+    clients = models.ForeignKey(Groups, on_delete=models.CASCADE, verbose_name='Group of clients')
+    text = models.ForeignKey(Mail, on_delete=models.CASCADE, verbose_name='Text of mailing')
 
     def __str__(self):
         return f'{self.time}, {self.frequency}, {self.status}, {self.clients}'
