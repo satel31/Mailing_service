@@ -1,0 +1,346 @@
+[
+  {
+    "model": "mailings.mail",
+    "pk": 3,
+    "fields": {
+      "subject": "test",
+      "body": "test"
+    }
+  },
+  {
+    "model": "mailings.mailings",
+    "pk": 2,
+    "fields": {
+      "time": "2023-07-05T00:00:00Z",
+      "end_time": "2023-07-10T00:00:00Z",
+      "frequency": "D",
+      "status": "created",
+      "clients": 1,
+      "text": 3
+    }
+  },
+  {
+    "model": "mailings.mailings",
+    "pk": 4,
+    "fields": {
+      "time": "2023-07-06T00:00:00Z",
+      "end_time": "2023-07-12T01:00:00Z",
+      "frequency": "D",
+      "status": "created",
+      "clients": 1,
+      "text": 3
+    }
+  },
+  {
+    "model": "mailings.mailings",
+    "pk": 5,
+    "fields": {
+      "time": "2023-07-05T00:00:00Z",
+      "end_time": "2023-07-17T00:00:00Z",
+      "frequency": "W",
+      "status": "created",
+      "clients": 1,
+      "text": 3
+    }
+  },
+  {
+    "model": "mailings.mailings",
+    "pk": 6,
+    "fields": {
+      "time": "2023-07-06T00:00:00Z",
+      "end_time": "2023-07-13T00:00:00Z",
+      "frequency": "D",
+      "status": "created",
+      "clients": 1,
+      "text": 3
+    }
+  },
+  {
+    "model": "mailings.mailings",
+    "pk": 7,
+    "fields": {
+      "time": "2023-08-06T00:00:00Z",
+      "end_time": "2024-06-06T00:00:00Z",
+      "frequency": "D",
+      "status": "created",
+      "clients": 1,
+      "text": 3
+    }
+  },
+  {
+    "model": "mailings.mailings",
+    "pk": 8,
+    "fields": {
+      "time": "2023-06-07T00:00:00Z",
+      "end_time": "2024-06-07T00:00:00Z",
+      "frequency": "D",
+      "status": "created",
+      "clients": 1,
+      "text": 3
+    }
+  },
+  {
+    "model": "mailings.mailings",
+    "pk": 9,
+    "fields": {
+      "time": "2023-06-07T00:00:00Z",
+      "end_time": "2024-06-07T00:00:00Z",
+      "frequency": "D",
+      "status": "created",
+      "clients": 1,
+      "text": 3
+    }
+  },
+  {
+    "model": "mailings.mailings",
+    "pk": 10,
+    "fields": {
+      "time": "2023-06-07T00:00:00Z",
+      "end_time": "2024-06-07T00:00:00Z",
+      "frequency": "D",
+      "status": "created",
+      "clients": 1,
+      "text": 3
+    }
+  },
+  {
+    "model": "mailings.mailinglog",
+    "pk": 1,
+    "fields": {
+      "attempt_date": "2023-07-06T17:09:29.767Z",
+      "attempt_status": "failure",
+      "response": "200",
+      "mailing": 4
+    }
+  },
+  {
+    "model": "mailings.mailinglog",
+    "pk": 2,
+    "fields": {
+      "attempt_date": "2023-07-07T18:29:44.021Z",
+      "attempt_status": "success",
+      "response": "E-mail was sent successfully",
+      "mailing": 6
+    }
+  },
+  {
+    "model": "mailings.mailinglog",
+    "pk": 3,
+    "fields": {
+      "attempt_date": "2023-07-07T18:33:56.986Z",
+      "attempt_status": "success",
+      "response": "E-mail was sent successfully",
+      "mailing": 6
+    }
+  },
+  {
+    "model": "mailings.mailinglog",
+    "pk": 4,
+    "fields": {
+      "attempt_date": "2023-07-07T18:36:25.741Z",
+      "attempt_status": "success",
+      "response": "E-mail was sent successfully",
+      "mailing": 4
+    }
+  },
+  {
+    "model": "mailings.mailinglog",
+    "pk": 5,
+    "fields": {
+      "attempt_date": "2023-07-07T18:36:25.741Z",
+      "attempt_status": "success",
+      "response": "E-mail was sent successfully",
+      "mailing": 4
+    }
+  },
+  {
+    "model": "mailings.mailinglog",
+    "pk": 6,
+    "fields": {
+      "attempt_date": "2023-07-07T18:36:25.741Z",
+      "attempt_status": "success",
+      "response": "E-mail was sent successfully",
+      "mailing": 4
+    }
+  },
+  {
+    "model": "mailings.mailinglog",
+    "pk": 7,
+    "fields": {
+      "attempt_date": "2023-07-07T18:36:27.014Z",
+      "attempt_status": "success",
+      "response": "E-mail was sent successfully",
+      "mailing": 6
+    }
+  },
+  {
+    "model": "mailings.mailinglog",
+    "pk": 8,
+    "fields": {
+      "attempt_date": "2023-07-07T18:36:27.014Z",
+      "attempt_status": "success",
+      "response": "E-mail was sent successfully",
+      "mailing": 6
+    }
+  },
+  {
+    "model": "mailings.mailinglog",
+    "pk": 9,
+    "fields": {
+      "attempt_date": "2023-07-07T18:36:27.014Z",
+      "attempt_status": "success",
+      "response": "E-mail was sent successfully",
+      "mailing": 6
+    }
+  },
+  {
+    "model": "mailings.mailinglog",
+    "pk": 10,
+    "fields": {
+      "attempt_date": "2023-07-07T18:36:28.014Z",
+      "attempt_status": "success",
+      "response": "E-mail was sent successfully",
+      "mailing": 5
+    }
+  },
+  {
+    "model": "mailings.mailinglog",
+    "pk": 11,
+    "fields": {
+      "attempt_date": "2023-07-07T18:36:28.014Z",
+      "attempt_status": "success",
+      "response": "E-mail was sent successfully",
+      "mailing": 5
+    }
+  },
+  {
+    "model": "mailings.mailinglog",
+    "pk": 12,
+    "fields": {
+      "attempt_date": "2023-07-07T18:36:28.014Z",
+      "attempt_status": "success",
+      "response": "E-mail was sent successfully",
+      "mailing": 5
+    }
+  },
+  {
+    "model": "mailings.mailinglog",
+    "pk": 13,
+    "fields": {
+      "attempt_date": "2023-07-07T18:36:29.229Z",
+      "attempt_status": "success",
+      "response": "E-mail was sent successfully",
+      "mailing": 2
+    }
+  },
+  {
+    "model": "mailings.mailinglog",
+    "pk": 14,
+    "fields": {
+      "attempt_date": "2023-07-07T18:36:29.229Z",
+      "attempt_status": "success",
+      "response": "E-mail was sent successfully",
+      "mailing": 2
+    }
+  },
+  {
+    "model": "mailings.mailinglog",
+    "pk": 15,
+    "fields": {
+      "attempt_date": "2023-07-07T18:36:29.229Z",
+      "attempt_status": "success",
+      "response": "E-mail was sent successfully",
+      "mailing": 2
+    }
+  },
+  {
+    "model": "mailings.mailinglog",
+    "pk": 16,
+    "fields": {
+      "attempt_date": "2023-07-07T18:36:30.641Z",
+      "attempt_status": "success",
+      "response": "E-mail was sent successfully",
+      "mailing": 8
+    }
+  },
+  {
+    "model": "mailings.mailinglog",
+    "pk": 17,
+    "fields": {
+      "attempt_date": "2023-07-07T18:36:30.641Z",
+      "attempt_status": "success",
+      "response": "E-mail was sent successfully",
+      "mailing": 8
+    }
+  },
+  {
+    "model": "mailings.mailinglog",
+    "pk": 18,
+    "fields": {
+      "attempt_date": "2023-07-07T18:36:30.641Z",
+      "attempt_status": "success",
+      "response": "E-mail was sent successfully",
+      "mailing": 8
+    }
+  },
+  {
+    "model": "mailings.mailinglog",
+    "pk": 19,
+    "fields": {
+      "attempt_date": "2023-07-07T18:36:31.751Z",
+      "attempt_status": "success",
+      "response": "E-mail was sent successfully",
+      "mailing": 9
+    }
+  },
+  {
+    "model": "mailings.mailinglog",
+    "pk": 20,
+    "fields": {
+      "attempt_date": "2023-07-07T18:36:31.751Z",
+      "attempt_status": "success",
+      "response": "E-mail was sent successfully",
+      "mailing": 9
+    }
+  },
+  {
+    "model": "mailings.mailinglog",
+    "pk": 21,
+    "fields": {
+      "attempt_date": "2023-07-07T18:36:31.751Z",
+      "attempt_status": "success",
+      "response": "E-mail was sent successfully",
+      "mailing": 9
+    }
+  },
+  {
+    "model": "mailings.mailinglog",
+    "pk": 22,
+    "fields": {
+      "attempt_date": "2023-07-07T18:36:33.200Z",
+      "attempt_status": "success",
+      "response": "E-mail was sent successfully",
+      "mailing": 10
+    }
+  },
+  {
+    "model": "mailings.mailinglog",
+    "pk": 23,
+    "fields": {
+      "attempt_date": "2023-07-07T18:36:33.200Z",
+      "attempt_status": "success",
+      "response": "E-mail was sent successfully",
+      "mailing": 10
+    }
+  },
+  {
+    "model": "mailings.mailinglog",
+    "pk": 24,
+    "fields": {
+      "attempt_date": "2023-07-07T18:36:33.200Z",
+      "attempt_status": "success",
+      "response": "E-mail was sent successfully",
+      "mailing": 10
+    }
+  }
+]
