@@ -46,6 +46,7 @@ THIRD_PARTY_APPS = []
 USER_APPS = [
     'apps.clients',
     'apps.mailings',
+    'apps.users',
 ]
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + USER_APPS
@@ -138,7 +139,14 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 EMAIL_HOST = 'smtp.yandex.ru'
 EMAIL_HOST_USER = os.getenv('email')
 EMAIL_PORT = 465
-#In case of error copy password from .env. It helps.
+# In case of error copy password from .env. It helps.
 EMAIL_HOST_PASSWORD = os.getenv('password')
 EMAIL_USE_TLS = False
 EMAIL_USE_SSL = True
+
+#Registration of users
+AUTH_USER_MODEL = 'users.User'
+
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
+LOGIN_URL = '/'
