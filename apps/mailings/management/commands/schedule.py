@@ -8,6 +8,7 @@ from apps.mailings.services import run_schedule
 
 class Command(BaseCommand):
     def handle(self, *args, **options):
+        """Runs schedule all the time"""
         run_schedule()
         while True:
             schedule.run_pending()

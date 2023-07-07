@@ -10,6 +10,8 @@ from config import settings
 
 
 def send_email(obj):
+    """Sends email to all clients in the group"""
+    #List for status
     status = []
     clients = Clients.objects.filter(group=obj.clients.pk)
     for client in clients:
@@ -34,15 +36,17 @@ def send_email(obj):
                 'mailing': obj,
             }
             status.append(MailingLog(**server_response))
-
+    #Create Logs for every attempt
     MailingLog.objects.bulk_create(status)
 def send_mailing():
-    """If start time <= now <= end time, sends email"""
+    """Decide if the email schould be sent"""
     mailings = Mailings.objects.all()
     for mailing in mailings:
         now = timezone.now()
+        # If the time of email is now or passed, sends an email
         if mailing.time <= now <= mailing.end_time or mailing.time == now:
             send_email(mailing)
+            #Changes frequency
             if mailing.frequency == 'D':
                 mailing.time += timedelta(days=1)
             elif mailing.frequency == 'W':
@@ -52,4 +56,5 @@ def send_mailing():
 
 
 def run_schedule():
+    """Run a schedule"""
     schedule.every(60).seconds.do(send_mailing)

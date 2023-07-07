@@ -16,10 +16,12 @@ class ClientsListView(ListView):
     model = Clients
 
     def get_queryset(self):
+        """Sort by pk"""
         queryset = super().get_queryset().filter(group_id=self.kwargs.get('pk')).order_by('pk')
         return queryset
 
     def get_context_data(self, *args, **kwargs):
+        """Add group name to context data"""
         context_data = super().get_context_data(**kwargs)
         groups = Groups.objects.get(pk=self.kwargs.get('pk'))
         context_data['title'] = f'Clients from the group {groups.group_name}'
