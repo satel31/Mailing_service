@@ -5,6 +5,7 @@ from django.views.generic import CreateView, ListView, DetailView, UpdateView, D
 
 from apps.blog.forms import PostForm
 from apps.blog.models import Post
+from apps.blog.services import get_posts_cache
 
 
 class PostCreateView(PermissionRequiredMixin, CreateView):
@@ -13,16 +14,17 @@ class PostCreateView(PermissionRequiredMixin, CreateView):
     permission_required = 'blog.add_post'
     success_url = reverse_lazy('blog:blog')
 
+
 class PostListView(ListView):
     model = Post
-    extra_context = {
-        'title': 'Our blog'
-    }
+    queryset = Post.objects.filter(is_published=True)
 
-    def get_queryset(self):
-        queryset = super().get_queryset()
-        queryset = queryset.filter(is_published=True)
-        return queryset
+    def get_context_data(self, *args, **kwargs):
+        context_data = super().get_context_data(**kwargs)
+        context_data['object_list'] = get_posts_cache()
+        context_data['title'] = 'Our blog'
+        return context_data
+
 
 class PostDetailView(DetailView):
     model = Post
@@ -39,6 +41,7 @@ class PostDetailView(DetailView):
             object.save()
         return object
 
+
 class PostUpdateView(PermissionRequiredMixin, UpdateView):
     model = Post
     form_class = PostForm
@@ -47,9 +50,8 @@ class PostUpdateView(PermissionRequiredMixin, UpdateView):
     def get_success_url(self):
         return reverse_lazy('blog:post', kwargs={'pk': self.kwargs['pk']})
 
+
 class PostDeleteView(PermissionRequiredMixin, DeleteView):
     model = Post
     permission_required = 'blog.delete_post'
     success_url = reverse_lazy('blog:blog')
-
-
