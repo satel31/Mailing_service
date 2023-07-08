@@ -47,20 +47,23 @@ def send_mailing():
     for mailing in mailings:
         now = timezone.now()
         # If the time of email is now or passed, sends an email
-        if mailing.time <= now <= mailing.end_time or mailing.time == now:
-            # Changes frequency
-            if mailing.frequency == 'D':
-                mailing.time += timedelta(days=1)
+        if mailing.status == 'created':
+            if mailing.time <= now <= mailing.end_time or mailing.time == now:
+                mailing.status = 'running'
+                # Changes frequency
+                if mailing.frequency == 'D':
+                    mailing.time += timedelta(days=1)
+                elif mailing.frequency == 'W':
+                    mailing.time += timedelta(days=7)
+                elif mailing.frequency == 'M':
+                    mailing.time += timedelta(days=30)
+                send_email(mailing)
                 mailing.save()
-            elif mailing.frequency == 'W':
-                mailing.time += timedelta(days=7)
+                print(mailing.time, mailing.status)
+            elif mailing.end_time == now:
+                send_email(mailing)
+                mailing.status = 'completed'
                 mailing.save()
-            elif mailing.frequency == 'M':
-                mailing.time += timedelta(days=30)
-                mailing.save()
-            send_email(mailing)
-        else:
-            pass
 
 
 def run_schedule():
