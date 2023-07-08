@@ -47,6 +47,7 @@ USER_APPS = [
     'apps.clients',
     'apps.mailings',
     'apps.users',
+    'apps.blog',
 ]
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + USER_APPS
@@ -150,3 +151,7 @@ AUTH_USER_MODEL = 'users.User'
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
 LOGIN_URL = '/users/'
+
+# Settings for images
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
