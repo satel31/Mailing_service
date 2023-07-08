@@ -111,8 +111,10 @@
 <footer class="text-body-secondary py-5">
     <div class="container">
         <p class="float-end mb-1">
-            <a href="{% url 'clients:add_group' %}">Create a new clients group</a>
-            <a href="{% url 'mailings:add_mailing' %}">Create a new mailing list</a>
+            {% if user.is_authenticated %}
+                <a href="{% url 'clients:add_group' %}">Create a new clients group</a>
+                <a href="{% url 'mailings:add_mailing' %}">Create a new mailing list</a>
+            {% endif %}
         </p>
     </div>
 </footer>

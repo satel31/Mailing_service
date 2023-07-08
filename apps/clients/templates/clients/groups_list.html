@@ -11,12 +11,13 @@
                         <div class="btn-group">
                             <a type="button" class="btn btn-sm btn-outline-secondary"
                                href="{% url 'clients:clients_list' object.pk %}">View Clients</a>
+                            {% if user == object.owner or user.is_superuser %}
+                                <a type="button" class="btn btn-sm btn-outline-secondary"
+                                   href="{% url 'clients:groups_update' object.pk %}">Edit</a>
 
-                            <a type="button" class="btn btn-sm btn-outline-secondary"
-                               href="{% url 'clients:groups_update' object.pk %}">Edit</a>
-
-                            <a type="button" class="btn btn-sm btn-outline-secondary"
-                               href="{% url 'clients:groups_delete' object.pk %}">Delete</a>
+                                <a type="button" class="btn btn-sm btn-outline-secondary"
+                                   href="{% url 'clients:groups_delete' object.pk %}">Delete</a>
+                            {% endif %}
 
                         </div>
                     </div>
