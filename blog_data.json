@@ -1,0 +1,74 @@
+[
+  {
+    "model": "blog.post",
+    "pk": 1,
+    "fields": {
+      "post_title": "test",
+      "text": "test",
+      "preview": "blog/2020-10-06_00-16-56_OJvIcyz.png",
+      "published_date": "2023-07-08T13:12:08.094Z",
+      "is_published": false,
+      "views": 11
+    }
+  },
+  {
+    "model": "blog.post",
+    "pk": 2,
+    "fields": {
+      "post_title": "test",
+      "text": "test",
+      "preview": "",
+      "published_date": "2023-07-08T13:29:46.977Z",
+      "is_published": false,
+      "views": 1
+    }
+  },
+  {
+    "model": "blog.post",
+    "pk": 3,
+    "fields": {
+      "post_title": "Our clients",
+      "text": "We have a lot of clients in our service.",
+      "preview": "blog/2020-10-06_00-16-56_e5mlnaF.png",
+      "published_date": "2023-07-08T13:33:53.751Z",
+      "is_published": true,
+      "views": 5
+    }
+  },
+  {
+    "model": "blog.post",
+    "pk": 4,
+    "fields": {
+      "post_title": "Our service",
+      "text": "We are a new service that helps companies and people with mailing service",
+      "preview": "",
+      "published_date": "2023-07-08T13:59:26.984Z",
+      "is_published": true,
+      "views": 0
+    }
+  },
+  {
+    "model": "blog.post",
+    "pk": 5,
+    "fields": {
+      "post_title": "Our team",
+      "text": "Let's meet with our team!",
+      "preview": "",
+      "published_date": "2023-07-08T13:59:55.832Z",
+      "is_published": true,
+      "views": 1
+    }
+  },
+  {
+    "model": "blog.post",
+    "pk": 6,
+    "fields": {
+      "post_title": "Work for us",
+      "text": "We have following positions open",
+      "preview": "",
+      "published_date": "2023-07-08T14:00:20.198Z",
+      "is_published": true,
+      "views": 0
+    }
+  }
+]

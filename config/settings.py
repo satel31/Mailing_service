@@ -46,6 +46,8 @@ THIRD_PARTY_APPS = []
 USER_APPS = [
     'apps.clients',
     'apps.mailings',
+    'apps.users',
+    'apps.blog',
 ]
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + USER_APPS
@@ -138,7 +140,28 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 EMAIL_HOST = 'smtp.yandex.ru'
 EMAIL_HOST_USER = os.getenv('email')
 EMAIL_PORT = 465
-#In case of error copy password from .env. It helps.
+# In case of error copy password from .env. It helps.
 EMAIL_HOST_PASSWORD = os.getenv('password')
 EMAIL_USE_TLS = False
 EMAIL_USE_SSL = True
+
+#Registration of users
+AUTH_USER_MODEL = 'users.User'
+
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
+LOGIN_URL = '/users/'
+
+# Settings for images
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+#Cache settings
+CACHE_ENABLED = os.getenv('cache_enabled')
+if CACHE_ENABLED:
+    CACHES = {
+        'default':{
+            "BACKEND": "django.core.cache.backends.redis.RedisCache",
+            "LOCATION": os.getenv('location'),
+        }
+    }

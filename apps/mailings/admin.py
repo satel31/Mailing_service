@@ -15,6 +15,13 @@ class MailingsAdmin(admin.ModelAdmin):
     list_filter = ('time', 'frequency', 'status', 'text')
     search_fields = ('clients', 'text',)
 
+    def get_readonly_fields(self, request, obj=None):
+        """Make fields read only fields"""
+        if request.user.is_superuser:
+            return self.readonly_fields
+        else:
+            return ['time', 'end_time', 'frequency', 'clients', 'text', 'owner']
+
 @admin.register(MailingLog)
 class MailingLogAdmin(admin.ModelAdmin):
     list_display = ('pk', 'attempt_date', 'attempt_status', 'response',)

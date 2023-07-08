@@ -1,0 +1,48 @@
+[
+  {
+    "model": "clients.groups",
+    "pk": 1,
+    "fields": {
+      "group_name": "Hobbits",
+      "description": "Hobbits group"
+    }
+  },
+  {
+    "model": "clients.groups",
+    "pk": 2,
+    "fields": {
+      "group_name": "Witchers",
+      "description": "Witchers group"
+    }
+  },
+  {
+    "model": "clients.clients",
+    "pk": 1,
+    "fields": {
+      "email": "frodo@mail.ru",
+      "name": "Frodo Baggins",
+      "comment": "",
+      "group": 1
+    }
+  },
+  {
+    "model": "clients.clients",
+    "pk": 2,
+    "fields": {
+      "email": "gervant@yandex.ru",
+      "name": "Geralt of Rivia",
+      "comment": "",
+      "group": 2
+    }
+  },
+  {
+    "model": "clients.clients",
+    "pk": 3,
+    "fields": {
+      "email": "pip@mail.ru",
+      "name": "Peregrin Took",
+      "comment": "",
+      "group": 1
+    }
+  }
+]

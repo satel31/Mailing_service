@@ -16,6 +16,8 @@ psycopg = "^3.1.9"
 django = "^4.2.2"
 python-dotenv = "^1.0.0"
 schedule = "^1.2.0"
+pillow = "^10.0.0"
+redis = "^4.6.0"
 
 [build-system]
 requires = ["poetry-core"]

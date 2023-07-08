@@ -1,3 +1,4 @@
+import datetime
 from datetime import timedelta
 
 import schedule
@@ -11,7 +12,7 @@ from config import settings
 
 def send_email(obj):
     """Sends email to all clients in the group"""
-    #List for status
+    # List for status
     status = []
     clients = Clients.objects.filter(group=obj.clients.pk)
     for client in clients:
@@ -36,23 +37,33 @@ def send_email(obj):
                 'mailing': obj,
             }
             status.append(MailingLog(**server_response))
-    #Create Logs for every attempt
+    # Create Logs for every attempt
     MailingLog.objects.bulk_create(status)
+
+
 def send_mailing():
     """Decide if the email schould be sent"""
     mailings = Mailings.objects.all()
     for mailing in mailings:
         now = timezone.now()
         # If the time of email is now or passed, sends an email
-        if mailing.time <= now <= mailing.end_time or mailing.time == now:
-            send_email(mailing)
-            #Changes frequency
-            if mailing.frequency == 'D':
-                mailing.time += timedelta(days=1)
-            elif mailing.frequency == 'W':
-                mailing.time += timedelta(days=7)
-            elif mailing.frequency == 'M':
-                mailing.time += timedelta(days=30)
+        if mailing.status == 'created':
+            if mailing.time <= now <= mailing.end_time or mailing.time == now:
+                mailing.status = 'running'
+                # Changes frequency
+                if mailing.frequency == 'D':
+                    mailing.time += timedelta(days=1)
+                elif mailing.frequency == 'W':
+                    mailing.time += timedelta(days=7)
+                elif mailing.frequency == 'M':
+                    mailing.time += timedelta(days=30)
+                send_email(mailing)
+                mailing.save()
+                print(mailing.time, mailing.status)
+            elif mailing.end_time == now:
+                send_email(mailing)
+                mailing.status = 'completed'
+                mailing.save()
 
 
 def run_schedule():
