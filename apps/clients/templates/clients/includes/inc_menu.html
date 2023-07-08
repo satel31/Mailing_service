@@ -1,19 +1,21 @@
 <header data-bs-theme="dark">
     <div class="container">
         <ul class="nav nav-pills">
+            <li class="nav-item"><a href="{% url 'mailings:home' %}" class="nav-link active"
+                                    aria-current="page">Home</a></li>
             {% if user.is_authenticated %}
-                <li class="nav-item"><a href="{% url 'mailings:mailings' %}" class="nav-link active"
-                                        aria-current="page">Mailing list</a></li>
+
+                <li class="nav-item"><a href="{% url 'mailings:mailings' %}" class="nav-link">Mailing list</a></li>
                 <li class="nav-item"><a href="{% url 'clients:groups_list' %}" class="nav-link">My clients</a></li>
                 <li class="nav-item"><a href="{% url 'mailings:mails' %}" class="nav-link">My mails</a></li>
                 <li class="nav-item"><a href="{% url 'mailings:logs' %}" class="nav-link">My history</a></li>
-                <li class="nav-item"><a href="#" class="nav-link">About</a></li>
                 <li class="nav-item"><a href="{% url 'users:logout' %}" class="nav-link">Log Out</a></li>
                 <li class="nav-item"><a href="{% url 'users:profile' user.pk %}" class="nav-link">Profile</a></li>
             {% else %}
                 <li class="nav-item"><a href="{% url 'users:register' %}" class="nav-link">Sign Up</a></li>
                 <li class="nav-item"><a href="{% url 'users:login' %}" class="nav-link">Log In</a></li>
             {% endif %}
+            <li class="nav-item"><a href="{% url 'blog:blog' %}" class="nav-link">Our Blog</a></li>
         </ul>
     </div>
 </header>
