@@ -155,3 +155,13 @@ LOGIN_URL = '/users/'
 # Settings for images
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+#Cache settings
+CACHE_ENABLED = os.getenv('cache_enabled')
+if CACHE_ENABLED:
+    CACHES = {
+        'default':{
+            "BACKEND": "django.core.cache.backends.redis.RedisCache",
+            "LOCATION": os.getenv('location'),
+        }
+    }
