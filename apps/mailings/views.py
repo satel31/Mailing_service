@@ -1,12 +1,24 @@
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.urls import reverse_lazy
-from django.views.generic import CreateView, ListView, UpdateView, DeleteView, DetailView
+from django.views.generic import CreateView, ListView, UpdateView, DeleteView, DetailView, TemplateView
 
+from apps.blog.models import Post
+from apps.clients.models import Clients
 from apps.mailings.forms import MailForm, MailingsForm
 from apps.mailings.models import Mail, Mailings, MailingLog
 from apps.mailings.services import send_mailing
 
 
+class HomePageView(TemplateView):
+    template_name = 'mailings/home.html'
+
+    def get_context_data(self, **kwargs):
+        context_data = super().get_context_data(**kwargs)
+        context_data['count_mailings_all'] = Mailings.objects.all().count()
+        context_data['count_mailings_active'] = Mailings.objects.filter(status__in=['created', 'running']).count()
+        context_data['count_clients'] = Clients.objects.distinct().count()
+        context_data['blog'] = Post.objects.filter(is_published=True).order_by('?')[:3]
+        return context_data
 class MailCreateView(LoginRequiredMixin, CreateView):
     model = Mail
     form_class = MailForm
