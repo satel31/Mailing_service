@@ -1,11 +1,12 @@
 from django.urls import path
 
 from apps.mailings.views import MailCreateView, MailListView, MailDeleteView, MailUpdateView, MailingsCreateView, \
-    MailingsListView, MailingsUpdateView, MailingsDeleteView, MailingLogListView
+    MailingsListView, MailingsUpdateView, MailingsDeleteView, MailingLogListView, HomePageView
 
 app_name = 'mailings'
 
 urlpatterns = [
+    path('', HomePageView.as_view(), name='home'),
     # mails urls
     path('add_mail/', MailCreateView.as_view(), name='add_mail'),
     path('mails/', MailListView.as_view(), name='mails'),
