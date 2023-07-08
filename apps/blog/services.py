@@ -5,6 +5,7 @@ from apps.blog.models import Post
 
 
 def get_posts_cache():
+    """Caches all posts for the blog"""
     if settings.CACHE_ENABLED:
         key = 'posts_list'
         posts_list = cache.get(key)

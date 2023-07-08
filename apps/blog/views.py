@@ -35,6 +35,7 @@ class PostDetailView(DetailView):
         return context_data
 
     def get_object(self, queryset=None):
+        """Adds views +1 when the post is opened"""
         object = self.model.objects.get(pk=self.kwargs['pk'])
         if object:
             object.views += 1

@@ -25,6 +25,7 @@ class MailCreateView(LoginRequiredMixin, CreateView):
     success_url = reverse_lazy('mailings:mails')
 
     def form_valid(self, form):
+        """Adds owner of the mail"""
         self.obj = form.save()
         self.object.owner = self.request.user
         self.object.save()
@@ -38,7 +39,7 @@ class MailListView(LoginRequiredMixin, ListView):
     }
 
     def get_queryset(self):
-        """Sort by pk"""
+        """Sort by pk, filter by owner"""
         queryset = super().get_queryset()
         if not self.request.user.is_superuser:
             queryset = queryset.filter(owner=self.request.user)
@@ -68,6 +69,7 @@ class MailingsCreateView(LoginRequiredMixin, CreateView):
     success_url = reverse_lazy('mailings:mailings')
 
     def form_valid(self, form):
+        """Adds owner of the mail, sends the first email"""
         self.object = form.save()
         self.object.owner = self.request.user
         send_mailing()
@@ -82,7 +84,7 @@ class MailingsListView(LoginRequiredMixin, ListView):
     }
 
     def get_queryset(self):
-        """Sort by pk"""
+        """Sort by pk, filter by owner"""
         queryset = super().get_queryset()
         if not self.request.user.is_superuser:
             queryset = queryset.filter(owner=self.request.user)
@@ -98,6 +100,7 @@ class MailingsUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
         return self.request.user == self.get_object().owner
 
     def form_valid(self, form):
+        """Adds owner of the mail"""
         self.object = form.save()
         send_mailing()
         self.object.save()
@@ -119,7 +122,7 @@ class MailingLogListView(LoginRequiredMixin, ListView):
     }
 
     def get_queryset(self):
-        """Sort by pk"""
+        """Sort by pk, filter ny owner of the mail"""
         queryset = super().get_queryset()
         if not self.request.user.is_superuser:
             mailing = Mailings.objects.filter(owner=self.request.user)

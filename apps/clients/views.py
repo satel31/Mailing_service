@@ -13,6 +13,7 @@ class ClientsCreateView(LoginRequiredMixin, CreateView):
     success_url = reverse_lazy('clients:groups_list')
 
     def form_valid(self, form):
+        """Adds owner of the client"""
         self.obj = form.save()
         self.object.owner = self.request.user
         self.object.save()
@@ -23,7 +24,7 @@ class ClientsListView(LoginRequiredMixin, ListView):
     model = Clients
 
     def get_queryset(self):
-        """Sort by pk"""
+        """Sort by pk, filter by owner"""
         queryset = super().get_queryset().filter(group_id=self.kwargs.get('pk')).order_by('pk')
         if not self.request.user.is_superuser:
             queryset = queryset.filter(owner=self.request.user)
@@ -42,7 +43,7 @@ class ClientsDetailView(LoginRequiredMixin, DetailView):
     template_name = 'clients/clients_detail.html'
 
     def get_queryset(self):
-        """Sort by pk"""
+        """Sort by pk, filter by owner"""
         queryset = super().get_queryset()
         if not self.request.user.is_superuser:
             queryset = queryset.filter(owner=self.request.user)
@@ -72,6 +73,7 @@ class GroupsCreateView(LoginRequiredMixin, CreateView):
     success_url = reverse_lazy('clients:groups_list')
 
     def form_valid(self, form):
+        """Add owner to group"""
         self.obj = form.save()
         self.object.owner = self.request.user
         self.object.save()
@@ -85,7 +87,7 @@ class GroupsListView(LoginRequiredMixin, ListView):
     }
 
     def get_queryset(self):
-        """Sort by pk"""
+        """Sort by pk, filter by owner"""
         queryset = super().get_queryset()
         if not self.request.user.is_superuser:
             queryset = queryset.filter(owner=self.request.user)

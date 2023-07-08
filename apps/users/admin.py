@@ -10,6 +10,7 @@ class UserAdmin(admin.ModelAdmin):
     list_display = ('email', 'activation_code', 'password', 'is_activated')
 
     def get_readonly_fields(self, request, obj=None):
+        """Makes fields readonly"""
         if request.user.is_superuser:
             return self.readonly_fields
         else:
