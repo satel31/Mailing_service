@@ -1,6 +1,7 @@
 from django.db import models
 
 from apps.clients.models import Groups, Clients
+from apps.users.models import User
 
 NULLABLE = {'blank': True, 'null': True}
 
@@ -8,6 +9,7 @@ NULLABLE = {'blank': True, 'null': True}
 class Mail(models.Model):
     subject = models.CharField(max_length=500, verbose_name='Subject of the e-mail')
     body = models.TextField(verbose_name='Body of the e-mail')
+    owner = models.ForeignKey(User, on_delete=models.SET_NULL, **NULLABLE)
 
     class Meta:
         verbose_name = 'mail'
@@ -33,6 +35,7 @@ class Mailings(models.Model):
                               verbose_name='Status of sending')
     clients = models.ForeignKey(Groups, on_delete=models.CASCADE, verbose_name='Group of clients')
     text = models.ForeignKey(Mail, on_delete=models.CASCADE, verbose_name='Text of mailing')
+    owner = models.ForeignKey(User, on_delete=models.SET_NULL, **NULLABLE)
 
     def __str__(self):
         return f'{self.time}, {self.frequency}, {self.status}, {self.clients}'
