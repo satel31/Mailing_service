@@ -1,0 +1,22 @@
+{% extends 'clients/base.html' %}
+
+{% load my_tags %}
+
+{% block content %}
+    <div class="col-md-8">
+        {% if object.preview %}
+            <img class="card-img-top"
+                 src="{{ object.preview|mediapath }}"
+                 alt="Card image cap">
+        {% endif %}
+        <h3 class="pb-4 mb-4 fst-italic border-bottom">
+            {{ title }}
+        </h3>
+
+        <article class="blog-post">
+            <p class="blog-post-meta">Published: {{ object.published_date }} Views: {{ object.views }}</p>
+
+            <p>{{ object.text }}</p>
+        </article>
+    </div>
+{% endblock %}

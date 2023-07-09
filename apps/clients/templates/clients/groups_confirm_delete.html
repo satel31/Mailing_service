@@ -1,0 +1,17 @@
+{% extends 'clients/base.html' %}
+
+{% block content %}
+    <form method="post">
+        <section class="content-section">
+            <h1>Removal of group {{ object.name }}</h1>
+
+            <div class="alert alert-danger">
+                <p>Are you sure? </p>
+            </div>
+            {% csrf_token %}
+            <a href="{% url 'clients:groups_update' object.pk %}" class="btn btn-default">No, it was a rash decision.</a>
+            <input type="submit" value="Yes, delete the group." class="btn btn-danger"/>
+
+        </section>
+    </form>
+{% endblock %}
