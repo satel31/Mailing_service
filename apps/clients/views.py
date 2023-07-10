@@ -14,7 +14,7 @@ class ClientsCreateView(LoginRequiredMixin, CreateView):
 
     def form_valid(self, form):
         """Adds owner of the client"""
-        self.obj = form.save()
+        self.object = form.save()
         self.object.owner = self.request.user
         self.object.save()
         return super().form_valid(form)
@@ -74,7 +74,7 @@ class GroupsCreateView(LoginRequiredMixin, CreateView):
 
     def form_valid(self, form):
         """Add owner to group"""
-        self.obj = form.save()
+        self.object = form.save()
         self.object.owner = self.request.user
         self.object.save()
         return super().form_valid(form)
