@@ -14,10 +14,11 @@ class ClientsForm(StyleFormMixin, forms.ModelForm):
     class Meta:
         model = Clients
         fields = '__all__'
-        exclude = ('owner', )
+        exclude = ('owner',)
 
 
 class GroupsForm(StyleFormMixin, forms.ModelForm):
     class Meta:
+        model = Groups
         fields = '__all__'
         exclude = ('owner',)
